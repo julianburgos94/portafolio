@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julian Burgos | Diseño & Personalizados</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #222;
+      --card-bg: #fff;
+      --accent: #25d366;
+      --primary: #203a43;
+      --secondary: #2c5364;
+      --gradient: linear-gradient(90deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+      --shadow: 0 4px 24px rgba(32,58,67,0.10);
+      --glow: 0 0 16px 2px #25d36655, 0 0 32px 4px #203a4388;
+    }
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Montserrat', 'Segoe UI', sans-serif;
+      transition: background 0.3s, color 0.3s;
+      min-height: 100vh;
+    }
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --card-bg: #1e1e1e;
+      --primary: #0f2027;
+      --secondary: #203a43;
+      --shadow: 0 4px 24px rgba(0,0,0,0.25);
+      --glow: 0 0 16px 2px #25d36633, 0 0 32px 4px #0f202799;
+    }
+    .dark-toggle {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: var(--primary);
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 2rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: var(--shadow);
+      transition: background 0.3s, box-shadow 0.3s;
+      filter: drop-shadow(0 0 8px #25d36688);
+      animation: glowPulse 2.5s infinite alternate;
+    }
+    @keyframes glowPulse {
+      0% { box-shadow: var(--shadow); }
+      100% { box-shadow: 0 0 24px 6px #25d36688, var(--shadow); }
+    }
+    header {
+      background: var(--gradient);
+      color: #fff;
+      padding: 4rem 2rem 3rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -60px;
+      transform: translateX(-50%);
+      width: 120vw;
+      height: 120px;
+      background: #fff;
+      border-radius: 50% 50% 0 0;
+      z-index: 1;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+    header h1 {
+      font-size: 3rem;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 16px rgba(32,58,67,0.12), 0 0 24px #25d36633;
+      animation: textGlow 2.5s infinite alternate;
+    }
+    @keyframes textGlow {
+      0% { text-shadow: 0 2px 16px rgba(32,58,67,0.12), 0 0 0 #25d36633; }
+      100% { text-shadow: 0 2px 16px rgba(32,58,67,0.12), 0 0 24px #25d36699; }
+    }
+    header p {
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-top: 1rem;
+      opacity: 0.95;
+      letter-spacing: 0.5px;
+      filter: drop-shadow(0 0 6px #25d36633);
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      background: var(--primary);
+      padding: 1.1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 12px rgba(32,58,67,0.08);
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      position: relative;
+      transition: color 0.2s;
+    }
+    nav a::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+      margin: 0 auto;
+      border-radius: 2px;
+    }
+    nav a:hover, nav a:focus {
+      color: var(--accent);
+      text-shadow: 0 0 8px #25d36688;
+    }
+    nav a:hover::after, nav a:focus::after {
+      width: 100%;
+    }
+    section {
+      padding: 3.5rem 2rem 2.5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease forwards;
+      background: transparent;
+    }
+    section:nth-of-type(2) { animation-delay: 0.2s; }
+    section:nth-of-type(3) { animation-delay: 0.4s; }
+    section:nth-of-type(4) { animation-delay: 0.6s; }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .title {
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin-bottom: 2.2rem;
+      color: var(--primary);
+      letter-spacing: 1px;
+      text-align: center;
+      position: relative;
+      filter: drop-shadow(0 0 8px #25d36633);
+    }
+    .title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      margin: 1rem auto 0 auto;
+      border-radius: 2px;
+      opacity: 0.7;
+      box-shadow: 0 0 12px #25d36677;
+      animation: barGlow 2s infinite alternate;
+    }
+    @keyframes barGlow {
+      0% { box-shadow: 0 0 12px #25d36633; }
+      100% { box-shadow: 0 0 24px #25d366cc; }
+    }
+    .grid {
+      display: grid;
+      gap: 2.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 1.2rem;
+      box-shadow: var(--shadow);
+      padding: 2rem 1.2rem 1.5rem 1.2rem;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+    }
+    .card:hover {
+      transform: translateY(-8px) scale(1.04) rotate(-1deg);
+      box-shadow: 0 8px 32px rgba(32,58,67,0.18), 0 0 24px #25d36655;
+      border-color: var(--accent);
+      z-index: 2;
+      animation: cardGlow 0.8s;
+    }
+    @keyframes cardGlow {
+      0% { box-shadow: var(--shadow); }
+      100% { box-shadow: 0 8px 32px rgba(32,58,67,0.18), 0 0 24px #25d36655; }
+    }
+    .card img {
+      width: 100%;
+      max-width: 180px;
+      border-radius: 0.7rem;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 2px 12px rgba(32,58,67,0.10);
+      object-fit: cover;
+      aspect-ratio: 4/3;
+      background: #eee;
+      transition: filter 0.3s, box-shadow 0.3s;
+      filter: drop-shadow(0 0 8px #25d36622);
+    }
+    .card:hover img {
+      filter: brightness(1.08) drop-shadow(0 0 16px #25d36677);
+      box-shadow: 0 4px 24px #25d36644;
+    }
+    .card h3 {
+      font-size: 1.25rem;
+      color: var(--secondary);
+      margin-bottom: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 8px #25d36622;
+    }
+    .card p {
+      font-size: 1.05rem;
+      color: var(--text-color);
+      opacity: 0.92;
+    }
+    /* Contacto Section */
+    #contacto {
+     
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 24px rgba(32,58,67,0.10), 0 0 32px #25d36633;
+      margin: 2.5rem auto 2rem auto;
+      padding: 2.5rem 2rem 2rem 2rem;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      animation: contactoGlow 2.5s infinite alternate;
+    }
+    @keyframes contactoGlow {
+      0% { box-shadow: 0 4px 24px rgba(32,58,67,0.10), 0 0 0 #25d36633; }
+      100% { box-shadow: 0 4px 24px rgba(32,58,67,0.10), 0 0 32px #25d36677; }
+    }
+    #contacto .title {
+      color: #0f2027;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 0 8px #25d36644);
+    }
+    #contacto .contact-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.3rem;
+      font-size: 1.18rem;
+      padding: 1.5rem 0 0 0;
+      width: 100%;
+    }
+    #contacto .contact-list p {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin: 0;
+      justify-content: center;
+      width: 100%;
+    }
+    #contacto a, #contacto span {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      font-weight: 500;
+      font-size: 1.08rem;
+      box-shadow: 0 2px 8px rgba(32,58,67,0.08);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+      position: relative;
+    }
+    #contacto a[href*="wa.me"] {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 12px #25d36677;
+      animation: btnGlow 2s infinite alternate;
+    }
+    #contacto a[href*="instagram"] {
+      background: linear-gradient(45deg,#fd5949,#d6249f,#285AEB);
+      color: #fff;
+      box-shadow: 0 0 12px #d6249f55;
+    }
+    #contacto span {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 0 8px #203a4344;
+    }
+    #contacto a:hover, #contacto span:hover {
+      filter: brightness(1.08);
+      box-shadow: 0 4px 16px #25d36699, 0 0 24px #25d36644;
+      transform: scale(1.05);
+    }
+    @keyframes btnGlow {
+      0% { box-shadow: 0 0 12px #25d36633; }
+      100% { box-shadow: 0 0 24px #25d366cc; }
+    }
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+      margin-top: 2rem;
+      box-shadow: 0 -2px 12px #25d36622;
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      header h1 { font-size: 2.1rem; }
+      .title { font-size: 1.4rem; }
+      section { padding: 2rem 1rem; }
+      #contacto { padding: 1.5rem 1rem; }
+    }
+    @media (max-width: 500px) {
+      .card img { max-width: 120px; }
+      .card { padding: 1.2rem 0.7rem; }
+      nav { gap: 1.2rem; font-size: 0.98rem; }
+    }
+  </style>
+</head>
+<body>
+  
+  <header>
+    <h1>Julian Burgos</h1>
+    <p>Diseño web, gráfico, edición de video y personalizados (DTF & sublimación)</p>
+  </header>
+  <nav>
+    <a href="#servicios">Servicios</a>
+    <a href="#productos">Productos</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <section id="servicios">
+    <h2 class="title">Servicios Creativos</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="diseno-web.jpeg" alt="Diseño Web">
+        <h3>Diseño Web</h3>
+        <p>Landing pages modernas, adaptables y rápidas para emprendedores.</p>
+      </div>
+      <div class="card">
+        <img src="diseno-grafico.jpeg" alt="Diseño Gráfico">
+        <h3>Diseño Gráfico</h3>
+        <p>Logos, flyers, menús, branding visual profesional y funcional.</p>
+      </div>
+      <div class="card">
+        <img src="edicion-video.jpeg" alt="Edición de Video">
+        <h3>Edición de Video</h3>
+        <p>Reels, TikToks y videos promocionales dinámicos y con impacto.</p>
+      </div>
+    </div>
+  </section>
+  <section id="productos">
+    <h2 class="title">Productos Personalizados</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="camisetas-dtf.jpeg" alt="Camisetas DTF">
+        <h3>Camisetas Personalizadas</h3>
+        <p>Diseños únicos con frases, logos o imágenes. Estampado DTF.</p>
+      </div>
+      <div class="card">
+        <img src="tazas.jpeg" alt="Tazas personalizadas">
+        <h3>Tazas Sublimadas</h3>
+        <p>Para regalos, marcas o momentos especiales. Personalizadas 100%.</p>
+      </div>
+      <div class="card">
+        <img src="gorra.jpeg" alt="Gorras y más">
+        <h3>Gorras y Otros</h3>
+        <p>Llaveros, mousepads y más con tu diseño preferido.</p>
+      </div>
+    </div>
+  </section>
+  <section id="contacto" style="opacity:1; transform:none; animation:none;">
+    <h2 class="title">Contáctame</h2>
+    <div class="contact-list">
+      <p>
+        <span style="font-size:1.5rem;">📲</span>
+        <a href="https://wa.me/573202641496" target="_blank" rel="noopener">WhatsApp: Escríbeme aquí</a>
+      </p>
+      <p>
+        <span style="font-size:1.5rem;">📧</span>
+        <span>ing.julianburgos@gmail.com</span>
+      </p>
+      <p>
+        <span style="font-size:1.5rem;">📸</span>
+        <a href="https://instagram.com/burgos.julian" target="_blank" rel="noopener">@burgos.julian</a>
+      </p>
+    </div>
+  </section>
+  </section>
+  <footer>
+    <p>© 2025 Julian Burgos - Todos los derechos reservados</p>
+  </footer>
+</body>
+</html>
